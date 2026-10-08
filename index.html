@@ -8,9 +8,10 @@
 
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         html {
@@ -18,209 +19,214 @@
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(135deg, #0b0b0b, #1b1b1b);
+            background: linear-gradient(135deg, #111111, #242424);
             color: white;
-            line-height: 1.6;
+            min-height: 100vh;
         }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        /* NAVBAR */
+        /* NAVIGATION */
 
         nav {
-            position: sticky;
+            width: 100%;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
             top: 0;
             z-index: 1000;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 15px 6%;
-
-            background: rgba(10, 10, 10, 0.88);
+            background: rgba(15, 15, 15, 0.88);
             backdrop-filter: blur(12px);
-
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
-        .nav-left {
+        .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
         }
 
-        .nav-logo {
-            width: 42px;
-            height: 42px;
+        .logo img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
             border-radius: 10px;
         }
 
-        .nav-title {
-            font-size: 20px;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 22px;
-        }
-
-        .nav-links a {
+        nav a {
             color: #ccc;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 14px;
             transition: 0.2s;
         }
 
-        .nav-links a:hover {
+        nav a:hover {
             color: white;
         }
 
-        /* LANGUAGE */
+        /* LANGUAGE DROPDOWN */
 
         .language-switcher {
-            background: #1a1a1a;
+            margin-left: 25px;
+            padding: 8px 10px;
+            background: #222;
             color: white;
-            border: 1px solid #444;
+            border: 1px solid #555;
             border-radius: 8px;
-            padding: 8px 11px;
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
             outline: none;
         }
 
         .language-switcher:hover {
-            border-color: #777;
+            border-color: #888;
         }
 
         .language-switcher option {
-            background: #1a1a1a;
+            background: #222;
             color: white;
         }
 
         /* HERO */
 
         .hero {
-            min-height: 90vh;
-
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-
             text-align: center;
-            padding: 40px 20px;
+            padding: 120px 20px 70px;
         }
 
-        .hero img {
-            width: 150px;
-            height: 150px;
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero-logo {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
             border-radius: 25px;
             margin-bottom: 25px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.45);
         }
 
         .hero h1 {
-            font-size: clamp(50px, 10vw, 100px);
+            font-size: clamp(55px, 10vw, 110px);
             letter-spacing: 8px;
-            margin-bottom: 15px;
+            font-weight: 900;
+            margin-bottom: 20px;
         }
 
         .hero p {
-            max-width: 650px;
-            color: #bbb;
+            color: #bdbdbd;
             font-size: 18px;
-            margin-bottom: 30px;
+            line-height: 1.6;
+            max-width: 650px;
+            margin: auto;
         }
 
         .buttons {
+            margin-top: 35px;
             display: flex;
+            justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
-            justify-content: center;
         }
 
         .button {
-            padding: 13px 24px;
+            padding: 14px 26px;
             border-radius: 10px;
+            text-decoration: none;
             font-weight: bold;
             transition: 0.2s;
         }
 
-        .button-primary {
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .primary {
             background: white;
             color: black;
         }
 
-        .button-secondary {
-            background: #2a2a2a;
+        .secondary {
+            background: #333;
             color: white;
-            border: 1px solid #444;
-        }
-
-        .button:hover {
-            transform: translateY(-2px);
-            opacity: 0.9;
+            border: 1px solid #555;
         }
 
         /* SECTIONS */
 
         section {
+            padding: 100px 8%;
             max-width: 1100px;
             margin: auto;
-            padding: 90px 25px;
         }
 
-        section h2 {
-            font-size: 38px;
-            margin-bottom: 20px;
-        }
-
-        section p {
-            color: #bbb;
-            max-width: 850px;
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 25px;
         }
 
         .card {
-            background: rgba(35, 35, 35, 0.8);
-            border: 1px solid #3a3a3a;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 18px;
-            padding: 30px;
-            margin-top: 25px;
+            padding: 35px;
+            margin-top: 30px;
+            backdrop-filter: blur(10px);
         }
 
-        /* SOCIALS */
-
-        .socials {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
+        .card h3 {
             margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 21px;
+        }
+
+        .card p {
+            color: #c7c7c7;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .card ul {
+            color: #c7c7c7;
+            line-height: 1.8;
+            padding-left: 25px;
         }
 
         /* CONTACT */
 
         .email {
+            display: inline-block;
+            margin-top: 10px;
             color: white;
+            text-decoration: none;
             font-weight: bold;
+            border-bottom: 1px solid white;
+            padding-bottom: 3px;
+        }
+
+        .email:hover {
+            opacity: 0.7;
         }
 
         /* FOOTER */
 
         footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 35px 8%;
             text-align: center;
-            padding: 35px 20px;
-            border-top: 1px solid #333;
             color: #777;
+            font-size: 13px;
         }
 
         footer a {
             color: #aaa;
+            text-decoration: none;
+            margin: 0 8px;
         }
 
         footer a:hover {
@@ -229,21 +235,54 @@
 
         /* MOBILE */
 
-        @media (max-width: 750px) {
+        @media (max-width: 700px) {
+
             nav {
-                flex-wrap: wrap;
-                gap: 15px;
+                padding: 15px 5%;
             }
 
-            .nav-links {
-                width: 100%;
-                justify-content: center;
+            .logo img {
+                width: 42px;
+                height: 42px;
+            }
+
+            nav > div {
+                display: flex;
+                align-items: center;
                 flex-wrap: wrap;
-                gap: 15px;
+                justify-content: flex-end;
+            }
+
+            nav a {
+                margin-left: 10px;
+                font-size: 12px;
+            }
+
+            .language-switcher {
+                margin-left: 10px;
+                font-size: 12px;
+                padding: 7px 8px;
+            }
+
+            .hero {
+                padding-top: 110px;
+            }
+
+            .hero-logo {
+                width: 145px;
+                height: 145px;
             }
 
             .hero h1 {
                 letter-spacing: 4px;
+            }
+
+            section {
+                padding: 75px 6%;
+            }
+
+            .card {
+                padding: 25px;
             }
         }
     </style>
@@ -254,17 +293,15 @@
     <!-- NAVIGATION -->
 
     <nav>
-        <div class="nav-left">
+
+        <a href="#" class="logo">
             <img
-                class="nav-logo"
                 src="https://tr.rbxcdn.com/180DAY-78d973c0d41d258a9d29341738bdfd56/150/150/Image/Webp/noFilter"
                 alt="Stagewrk Logo"
             >
+        </a>
 
-            <div class="nav-title">STAGEWRK</div>
-        </div>
-
-        <div class="nav-links">
+        <div>
             <a href="#about" data-i18n="navAbout">About</a>
             <a href="#rights" data-i18n="navRights">IP & Rights</a>
             <a href="#socials" data-i18n="navSocials">Socials</a>
@@ -279,6 +316,7 @@
                 <option value="de">Deutsch</option>
             </select>
         </div>
+
     </nav>
 
 
@@ -286,36 +324,42 @@
 
     <header class="hero">
 
-        <img
-            src="https://tr.rbxcdn.com/180DAY-78d973c0d41d258a9d29341738bdfd56/150/150/Image/Webp/noFilter"
-            alt="Stagewrk Logo"
-        >
+        <div class="hero-content">
 
-        <h1>STAGEWRK</h1>
-
-        <p data-i18n="heroText">
-            Roblox concerts, events and experiences.
-        </p>
-
-        <div class="buttons">
-
-            <a
-                class="button button-primary"
-                href="https://discord.gg/Ncc3Sfez44"
-                target="_blank"
-                data-i18n="discordButton"
+            <img
+                class="hero-logo"
+                src="https://tr.rbxcdn.com/180DAY-78d973c0d41d258a9d29341738bdfd56/150/150/Image/Webp/noFilter"
+                alt="Stagewrk Logo"
             >
-                Join our Discord
-            </a>
 
-            <a
-                class="button button-secondary"
-                href="https://www.roblox.com/share/g/35592558"
-                target="_blank"
-                data-i18n="robloxButton"
-            >
-                Roblox Group
-            </a>
+            <h1>STAGEWRK</h1>
+
+            <p data-i18n="heroText">
+                Immersive virtual concert experiences, built for Roblox.
+                Custom stages, lighting, effects, venues and live events.
+            </p>
+
+            <div class="buttons">
+
+                <a
+                    class="button primary"
+                    href="https://discord.gg/Ncc3Sfez44"
+                    target="_blank"
+                    data-i18n="discordButton"
+                >
+                    Join our Discord
+                </a>
+
+                <a
+                    class="button secondary"
+                    href="https://www.roblox.com/share/g/35592558"
+                    target="_blank"
+                    data-i18n="robloxButton"
+                >
+                    Roblox Group
+                </a>
+
+            </div>
 
         </div>
 
@@ -326,16 +370,37 @@
 
     <section id="about">
 
-        <h2 data-i18n="aboutTitle">
+        <h2 class="section-title" data-i18n="aboutTitle">
             About Stagewrk
         </h2>
 
         <div class="card">
 
-            <p data-i18n="aboutText">
-                Stagewrk is a Roblox-based concert and entertainment project
-                focused on creating virtual live experiences, concerts,
-                stages and events.
+            <p data-i18n="about1">
+                Stagewrk is a community-driven Roblox concert and event
+                project focused on creating immersive virtual live-show
+                experiences.
+            </p>
+
+            <p data-i18n="about2">
+                Our goal is to bring the atmosphere of real concerts into
+                Roblox through custom-built stages, lighting, effects,
+                virtual venues and interactive events.
+            </p>
+
+            <p data-i18n="about3">
+                Stagewrk is created by fans and developers who enjoy music,
+                live events and building experiences within Roblox. We aim
+                to create entertaining, high-quality experiences while
+                respecting the artists, brands and communities that inspire
+                our work.
+            </p>
+
+            <p data-i18n="about4">
+                Stagewrk is an independent project and is not operated by,
+                sponsored by, or officially affiliated with any of the
+                artists, bands, venues or companies represented in our
+                experiences unless explicitly stated otherwise.
             </p>
 
         </div>
@@ -343,29 +408,81 @@
     </section>
 
 
-    <!-- IP & RIGHTS -->
+    <!-- INTELLECTUAL PROPERTY -->
 
     <section id="rights">
 
-        <h2 data-i18n="rightsTitle">
-            IP & Rights
+        <h2 class="section-title" data-i18n="rightsTitle">
+            Intellectual Property & Rights
         </h2>
 
         <div class="card">
 
-            <p data-i18n="rightsText">
-                Stagewrk is not affiliated with Rammstein, Völkerball,
-                Lindemann or any other artists featured in our experiences.
-                We do not claim ownership of music or third-party intellectual
-                property used in our projects.
+            <p data-i18n="rights1">
+                Stagewrk respects the intellectual property rights of artists,
+                musicians, companies, creators and other rights holders.
             </p>
 
-            <br>
+            <p data-i18n="rights2">
+                Unless explicitly stated otherwise, Stagewrk does not claim
+                ownership of third-party music, artist names, trademarks,
+                logos, photographs, recordings or other copyrighted material
+                that may be referenced or represented within our experiences.
+            </p>
 
-            <p data-i18n="rightsText2">
-                Stagewrk-created assets, including stages, models,
-                lighting systems and other original content, may not be
-                copied, redistributed or used without permission.
+            <p data-i18n="rights3">
+                Any third-party names, trademarks, logos or other recognizable
+                properties remain the property of their respective owners and
+                are used only to identify the subject or inspiration of an
+                experience where applicable.
+            </p>
+
+            <p data-i18n="rights4">
+                Stagewrk is not affiliated with, endorsed by, sponsored by,
+                or officially associated with any artist, band, record label,
+                venue, company or other rights holder unless explicitly stated.
+            </p>
+
+            <h3 data-i18n="createdContentTitle">
+                Stagewrk-created content
+            </h3>
+
+            <p data-i18n="rights5">
+                Original content created specifically for Stagewrk, including
+                custom stage designs, models, scripts, systems, graphics and
+                other assets, remains the property of Stagewrk or its
+                respective creators unless otherwise stated.
+            </p>
+
+            <p data-i18n="rights6">
+                You may not copy, redistribute, resell, reupload, modify or
+                use Stagewrk-created assets in another project without
+                permission from the respective rights holder.
+            </p>
+
+            <p data-i18n="rights7">
+                This includes, but is not limited to:
+            </p>
+
+            <ul>
+                <li data-i18n="asset1">Stage and venue models</li>
+                <li data-i18n="asset2">Custom Roblox assets</li>
+                <li data-i18n="asset3">Scripts and systems</li>
+                <li data-i18n="asset4">Lighting systems</li>
+                <li data-i18n="asset5">Graphics and promotional artwork</li>
+                <li data-i18n="asset6">Custom logos and designs created by Stagewrk</li>
+            </ul>
+
+            <p style="margin-top: 20px;" data-i18n="rights8">
+                If you believe that content appearing on a Stagewrk platform
+                infringes your intellectual property rights, please contact
+                the Stagewrk team with information identifying the material
+                and your rights to it.
+            </p>
+
+            <p data-i18n="rights9">
+                Nothing on this page is intended to transfer ownership of
+                third-party intellectual property to Stagewrk.
             </p>
 
         </div>
@@ -377,29 +494,36 @@
 
     <section id="socials">
 
-        <h2 data-i18n="socialsTitle">
-            Socials
+        <h2 class="section-title" data-i18n="socialsTitle">
+            Follow Stagewrk
         </h2>
 
-        <div class="socials">
+        <div class="card">
 
-            <a
-                class="button button-primary"
-                href="https://www.youtube.com/@STAGEWRK"
-                target="_blank"
-                data-i18n="youtubeButton"
-            >
-                YouTube
-            </a>
+            <p data-i18n="socialsText">
+                Follow Stagewrk for upcoming concerts, announcements,
+                behind-the-scenes content and more.
+            </p>
 
-            <a
-                class="button button-secondary"
-                href="https://www.tiktok.com/@stagewrk?lang=de-DE"
-                target="_blank"
-                data-i18n="tiktokButton"
-            >
-                TikTok
-            </a>
+            <div class="buttons">
+
+                <a
+                    class="button primary"
+                    href="https://www.youtube.com/@STAGEWRK"
+                    target="_blank"
+                >
+                    YouTube
+                </a>
+
+                <a
+                    class="button secondary"
+                    href="https://www.tiktok.com/@stagewrk"
+                    target="_blank"
+                >
+                    TikTok
+                </a>
+
+            </div>
 
         </div>
 
@@ -410,17 +534,17 @@
 
     <section id="contact">
 
-        <h2 data-i18n="contactTitle">
+        <h2 class="section-title" data-i18n="contactTitle">
             Contact
         </h2>
 
         <div class="card">
 
             <p data-i18n="contactText">
-                For questions, partnerships or other inquiries, contact us at:
+                For general inquiries, partnerships, copyright or intellectual
+                property matters, asset permissions, or other Stagewrk-related
+                issues, contact our team by email.
             </p>
-
-            <br>
 
             <a
                 class="email"
@@ -440,10 +564,15 @@
 
         <p>
             © 2026 Stagewrk.
-            <span data-i18n="footerText">
-                All rights reserved.
-            </span>
+            <span data-i18n="footerText">All rights reserved.</span>
         </p>
+
+        <br>
+
+        <a href="#about" data-i18n="navAbout">About</a>
+        <a href="#rights" data-i18n="navRights">IP & Rights</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
+        <a href="#socials" data-i18n="navSocials">Socials</a>
 
     </footer>
 
@@ -462,7 +591,7 @@
                 navContact: "Contact",
 
                 heroText:
-                    "Roblox concerts, events and experiences.",
+                    "Immersive virtual concert experiences, built for Roblox. Custom stages, lighting, effects, venues and live events.",
 
                 discordButton:
                     "Join our Discord",
@@ -473,42 +602,91 @@
                 aboutTitle:
                     "About Stagewrk",
 
-                aboutText:
-                    "Stagewrk is a Roblox-based concert and entertainment project focused on creating virtual live experiences, concerts, stages and events.",
+                about1:
+                    "Stagewrk is a community-driven Roblox concert and event project focused on creating immersive virtual live-show experiences.",
+
+                about2:
+                    "Our goal is to bring the atmosphere of real concerts into Roblox through custom-built stages, lighting, effects, virtual venues and interactive events.",
+
+                about3:
+                    "Stagewrk is created by fans and developers who enjoy music, live events and building experiences within Roblox. We aim to create entertaining, high-quality experiences while respecting the artists, brands and communities that inspire our work.",
+
+                about4:
+                    "Stagewrk is an independent project and is not operated by, sponsored by, or officially affiliated with any of the artists, bands, venues or companies represented in our experiences unless explicitly stated otherwise.",
 
                 rightsTitle:
-                    "IP & Rights",
+                    "Intellectual Property & Rights",
 
-                rightsText:
-                    "Stagewrk is not affiliated with Rammstein, Völkerball, Lindemann or any other artists featured in our experiences. We do not claim ownership of music or third-party intellectual property used in our projects.",
+                rights1:
+                    "Stagewrk respects the intellectual property rights of artists, musicians, companies, creators and other rights holders.",
 
-                rightsText2:
-                    "Stagewrk-created assets, including stages, models, lighting systems and other original content, may not be copied, redistributed or used without permission.",
+                rights2:
+                    "Unless explicitly stated otherwise, Stagewrk does not claim ownership of third-party music, artist names, trademarks, logos, photographs, recordings or other copyrighted material that may be referenced or represented within our experiences.",
+
+                rights3:
+                    "Any third-party names, trademarks, logos or other recognizable properties remain the property of their respective owners and are used only to identify the subject or inspiration of an experience where applicable.",
+
+                rights4:
+                    "Stagewrk is not affiliated with, endorsed by, sponsored by, or officially associated with any artist, band, record label, venue, company or other rights holder unless explicitly stated.",
+
+                createdContentTitle:
+                    "Stagewrk-created content",
+
+                rights5:
+                    "Original content created specifically for Stagewrk, including custom stage designs, models, scripts, systems, graphics and other assets, remains the property of Stagewrk or its respective creators unless otherwise stated.",
+
+                rights6:
+                    "You may not copy, redistribute, resell, reupload, modify or use Stagewrk-created assets in another project without permission from the respective rights holder.",
+
+                rights7:
+                    "This includes, but is not limited to:",
+
+                asset1:
+                    "Stage and venue models",
+
+                asset2:
+                    "Custom Roblox assets",
+
+                asset3:
+                    "Scripts and systems",
+
+                asset4:
+                    "Lighting systems",
+
+                asset5:
+                    "Graphics and promotional artwork",
+
+                asset6:
+                    "Custom logos and designs created by Stagewrk",
+
+                rights8:
+                    "If you believe that content appearing on a Stagewrk platform infringes your intellectual property rights, please contact the Stagewrk team with information identifying the material and your rights to it.",
+
+                rights9:
+                    "Nothing on this page is intended to transfer ownership of third-party intellectual property to Stagewrk.",
 
                 socialsTitle:
-                    "Socials",
+                    "Follow Stagewrk",
 
-                youtubeButton:
-                    "YouTube",
-
-                tiktokButton:
-                    "TikTok",
+                socialsText:
+                    "Follow Stagewrk for upcoming concerts, announcements, behind-the-scenes content and more.",
 
                 contactTitle:
                     "Contact",
 
                 contactText:
-                    "For questions, partnerships or other inquiries, contact us at:",
+                    "For general inquiries, partnerships, copyright or intellectual property matters, asset permissions, or other Stagewrk-related issues, contact our team by email.",
 
                 footerText:
                     "All rights reserved."
 
             },
 
+
             de: {
 
                 navAbout:
-                    "Über uns",
+                    "Über Stagewrk",
 
                 navRights:
                     "IP & Rechte",
@@ -520,7 +698,7 @@
                     "Kontakt",
 
                 heroText:
-                    "Roblox-Konzerte, Events und Erlebnisse.",
+                    "Immersive virtuelle Konzerterlebnisse, entwickelt für Roblox. Individuelle Bühnen, Beleuchtung, Effekte, Veranstaltungsorte und Live-Events.",
 
                 discordButton:
                     "Unserem Discord beitreten",
@@ -531,32 +709,80 @@
                 aboutTitle:
                     "Über Stagewrk",
 
-                aboutText:
-                    "Stagewrk ist ein Roblox-basiertes Konzert- und Entertainment-Projekt, das sich auf virtuelle Live-Erlebnisse, Konzerte, Bühnen und Events konzentriert.",
+                about1:
+                    "Stagewrk ist ein von der Community getragenes Roblox-Konzert- und Eventprojekt, das sich auf die Erstellung immersiver virtueller Live-Show-Erlebnisse konzentriert.",
+
+                about2:
+                    "Unser Ziel ist es, die Atmosphäre echter Konzerte nach Roblox zu bringen, mit individuell erstellten Bühnen, Beleuchtung, Effekten, virtuellen Veranstaltungsorten und interaktiven Events.",
+
+                about3:
+                    "Stagewrk wird von Fans und Entwicklern erstellt, die Musik, Live-Events und das Entwickeln von Erlebnissen innerhalb von Roblox lieben. Wir möchten unterhaltsame und hochwertige Erlebnisse schaffen und dabei die Künstler, Marken und Communities respektieren, die unsere Arbeit inspirieren.",
+
+                about4:
+                    "Stagewrk ist ein unabhängiges Projekt und wird nicht von den Künstlern, Bands, Veranstaltungsorten oder Unternehmen, die in unseren Erlebnissen dargestellt werden, betrieben, gesponsert oder offiziell unterstützt, sofern nicht ausdrücklich anders angegeben.",
 
                 rightsTitle:
-                    "IP & Rechte",
+                    "Geistiges Eigentum & Rechte",
 
-                rightsText:
-                    "Stagewrk steht in keiner Verbindung zu Rammstein, Völkerball, Lindemann oder anderen Künstlern, die in unseren Erlebnissen auftreten. Wir beanspruchen kein Eigentum an Musik oder geistigem Eigentum Dritter, das in unseren Projekten verwendet wird.",
+                rights1:
+                    "Stagewrk respektiert die Rechte am geistigen Eigentum von Künstlern, Musikern, Unternehmen, Urhebern und anderen Rechteinhabern.",
 
-                rightsText2:
-                    "Von Stagewrk erstellte Inhalte, darunter Bühnen, Modelle, Lichtsysteme und andere originale Inhalte, dürfen ohne Genehmigung nicht kopiert, weiterverbreitet oder anderweitig verwendet werden.",
+                rights2:
+                    "Sofern nicht ausdrücklich anders angegeben, beansprucht Stagewrk kein Eigentum an Musik, Künstlernamen, Marken, Logos, Fotografien, Aufnahmen oder anderem urheberrechtlich geschütztem Material Dritter, das in unseren Erlebnissen erwähnt oder dargestellt werden kann.",
+
+                rights3:
+                    "Alle Namen, Marken, Logos und anderen erkennbaren Eigenschaften Dritter bleiben Eigentum ihrer jeweiligen Inhaber und werden, soweit zutreffend, ausschließlich zur Identifizierung des Themas oder der Inspiration eines Erlebnisses verwendet.",
+
+                rights4:
+                    "Stagewrk ist nicht mit Künstlern, Bands, Plattenlabels, Veranstaltungsorten, Unternehmen oder anderen Rechteinhabern verbunden, wird von diesen nicht unterstützt oder gesponsert und steht nicht offiziell mit ihnen in Verbindung, sofern nicht ausdrücklich anders angegeben.",
+
+                createdContentTitle:
+                    "Von Stagewrk erstellte Inhalte",
+
+                rights5:
+                    "Originalinhalte, die speziell für Stagewrk erstellt wurden, darunter individuelle Bühnendesigns, Modelle, Skripte, Systeme, Grafiken und andere Assets, bleiben Eigentum von Stagewrk oder der jeweiligen Ersteller, sofern nicht anders angegeben.",
+
+                rights6:
+                    "Du darfst von Stagewrk erstellte Assets ohne Genehmigung des jeweiligen Rechteinhabers nicht kopieren, weiterverbreiten, verkaufen, erneut hochladen, verändern oder in einem anderen Projekt verwenden.",
+
+                rights7:
+                    "Dies umfasst unter anderem:",
+
+                asset1:
+                    "Bühnen- und Veranstaltungsmodelle",
+
+                asset2:
+                    "Individuelle Roblox-Assets",
+
+                asset3:
+                    "Skripte und Systeme",
+
+                asset4:
+                    "Beleuchtungssysteme",
+
+                asset5:
+                    "Grafiken und Werbematerial",
+
+                asset6:
+                    "Individuelle Logos und Designs von Stagewrk",
+
+                rights8:
+                    "Wenn du der Meinung bist, dass auf einer Stagewrk-Plattform enthaltene Inhalte deine Rechte am geistigen Eigentum verletzen, kontaktiere bitte das Stagewrk-Team mit Informationen zur Identifizierung des Materials und zu deinen Rechten daran.",
+
+                rights9:
+                    "Nichts auf dieser Seite soll das Eigentum an geistigem Eigentum Dritter auf Stagewrk übertragen.",
 
                 socialsTitle:
-                    "Socials",
+                    "Stagewrk folgen",
 
-                youtubeButton:
-                    "YouTube",
-
-                tiktokButton:
-                    "TikTok",
+                socialsText:
+                    "Folge Stagewrk für kommende Konzerte, Ankündigungen, Einblicke hinter die Kulissen und mehr.",
 
                 contactTitle:
                     "Kontakt",
 
                 contactText:
-                    "Für Fragen, Partnerschaften oder andere Anliegen erreichst du uns unter:",
+                    "Für allgemeine Anfragen, Partnerschaften, Urheberrechts- oder IP-Angelegenheiten, Genehmigungen für Assets oder andere Anliegen rund um Stagewrk kannst du unser Team per E-Mail kontaktieren.",
 
                 footerText:
                     "Alle Rechte vorbehalten."
@@ -585,10 +811,8 @@
                         element.getAttribute("data-i18n");
 
                     if (translation[key]) {
-
                         element.textContent =
                             translation[key];
-
                     }
 
                 });
@@ -618,9 +842,7 @@
         languageSwitcher.addEventListener(
             "change",
             function () {
-
                 setLanguage(this.value);
-
             }
         );
 
