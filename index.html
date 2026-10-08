@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stagewrk</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #111111, #242424);
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            width: 100%;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            background: rgba(15, 15, 15, 0.88);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 70px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero-logo {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            border-radius: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 10vw, 110px);
+            letter-spacing: 8px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: #bdbdbd;
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 14px 26px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .primary {
+            background: white;
+            color: black;
+        }
+
+        .secondary {
+            background: #333;
+            color: white;
+            border: 1px solid #555;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 100px 8%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 35px;
+            margin-top: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .card h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 21px;
+        }
+
+        .card p {
+            color: #c7c7c7;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .card ul {
+            color: #c7c7c7;
+            line-height: 1.8;
+            padding-left: 25px;
+        }
+
+        /* CONTACT */
+
+        .email {
+            display: inline-block;
+            margin-top: 10px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 1px solid white;
+            padding-bottom: 3px;
+        }
+
+        .email:hover {
+            opacity: 0.7;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 35px 8%;
+            text-align: center;
+            color: #777;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: #aaa;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            .logo img {
+                width: 42px;
+                height: 42px;
+            }
+
+            nav a {
+                margin-left: 10px;
+                font-size: 12px;
+            }
+
+            .hero {
+                padding-top: 110px;
+            }
+
+            .hero-logo {
+                width: 145px;
+                height: 145px;
+            }
+
+            .hero h1 {
+                letter-spacing: 4px;
+            }
+
+            section {
+                padding: 75px 6%;
+            }
+
+            .card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <a href="#" class="logo">
+            <img
+                src="https://tr.rbxcdn.com/180DAY-78d973c0d41d258a9d29341738bdfd56/150/150/Image/Webp/noFilter"
+                alt="Stagewrk Logo"
+            >
+        </a>
+
+        <div>
+            <a href="#about">About</a>
+            <a href="#rights">IP & Rights</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <img
+                class="hero-logo"
+                src="https://tr.rbxcdn.com/180DAY-78d973c0d41d258a9d29341738bdfd56/150/150/Image/Webp/noFilter"
+                alt="Stagewrk Logo"
+            >
+
+            <h1>STAGEWRK</h1>
+
+            <p>
+                Immersive virtual concert experiences, built for Roblox.
+                Custom stages, lighting, effects, venues and live events.
+            </p>
+
+            <div class="buttons">
+
+                <a
+                    class="button primary"
+                    href="https://discord.gg/Ncc3Sfez44"
+                    target="_blank"
+                >
+                    Join our Discord
+                </a>
+
+                <a
+                    class="button secondary"
+                    href="https://www.roblox.com/share/g/35592558"
+                    target="_blank"
+                >
+                    Roblox Group
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <h2 class="section-title">About Stagewrk</h2>
+
+        <div class="card">
+
+            <p>
+                Stagewrk is a community-driven Roblox concert and event
+                project focused on creating immersive virtual live-show
+                experiences.
+            </p>
+
+            <p>
+                Our goal is to bring the atmosphere of real concerts into
+                Roblox through custom-built stages, lighting, effects,
+                virtual venues and interactive events.
+            </p>
+
+            <p>
+                Stagewrk is created by fans and developers who enjoy music,
+                live events and building experiences within Roblox. We aim
+                to create entertaining, high-quality experiences while
+                respecting the artists, brands and communities that inspire
+                our work.
+            </p>
+
+            <p>
+                Stagewrk is an independent project and is not operated by,
+                sponsored by, or officially affiliated with any of the
+                artists, bands, venues or companies represented in our
+                experiences unless explicitly stated otherwise.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- INTELLECTUAL PROPERTY -->
+
+    <section id="rights">
+
+        <h2 class="section-title">Intellectual Property & Rights</h2>
+
+        <div class="card">
+
+            <p>
+                Stagewrk respects the intellectual property rights of artists,
+                musicians, companies, creators and other rights holders.
+            </p>
+
+            <p>
+                Unless explicitly stated otherwise, Stagewrk does not claim
+                ownership of third-party music, artist names, trademarks,
+                logos, photographs, recordings or other copyrighted material
+                that may be referenced or represented within our experiences.
+            </p>
+
+            <p>
+                Any third-party names, trademarks, logos or other recognizable
+                properties remain the property of their respective owners and
+                are used only to identify the subject or inspiration of an
+                experience where applicable.
+            </p>
+
+            <p>
+                Stagewrk is not affiliated with, endorsed by, sponsored by,
+                or officially associated with any artist, band, record label,
+                venue, company or other rights holder unless explicitly stated.
+            </p>
+
+            <h3>Stagewrk-created content</h3>
+
+            <p>
+                Original content created specifically for Stagewrk, including
+                custom stage designs, models, scripts, systems, graphics and
+                other assets, remains the property of Stagewrk or its
+                respective creators unless otherwise stated.
+            </p>
+
+            <p>
+                You may not copy, redistribute, resell, reupload, modify or
+                use Stagewrk-created assets in another project without
+                permission from the respective rights holder.
+            </p>
+
+            <p>This includes, but is not limited to:</p>
+
+            <ul>
+                <li>Stage and venue models</li>
+                <li>Custom Roblox assets</li>
+                <li>Scripts and systems</li>
+                <li>Lighting systems</li>
+                <li>Graphics and promotional artwork</li>
+                <li>Custom logos and designs created by Stagewrk</li>
+            </ul>
+
+            <p style="margin-top: 20px;">
+                If you believe that content appearing on a Stagewrk platform
+                infringes your intellectual property rights, please contact
+                the Stagewrk team with information identifying the material
+                and your rights to it.
+            </p>
+
+            <p>
+                Nothing on this page is intended to transfer ownership of
+                third-party intellectual property to Stagewrk.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <h2 class="section-title">Contact</h2>
+
+        <div class="card">
+
+            <p>
+                For general inquiries, partnerships, copyright or intellectual
+                property matters, asset permissions, or other Stagewrk-related
+                issues, contact our team by email.
+            </p>
+
+            <a
+                class="email"
+                href="mailto:lamyguy211@gmail.com"
+            >
+                lamyguy211@gmail.com
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Stagewrk. All rights reserved.
+        </p>
+
+        <br>
+
+        <a href="#about">About</a>
+        <a href="#rights">IP & Rights</a>
+        <a href="#contact">Contact</a>
+
+    </footer>
+
+</body>
+</html>
