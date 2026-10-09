@@ -19,11 +19,27 @@
             scroll-behavior: smooth;
         }
 
+    
+
         body {
-            background: linear-gradient(135deg, #111111, #242424);
+            background: #111;
             color: white;
             min-height: 100vh;
         }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: -5px;
+            background: url("images/004.jpg") center center / cover no-repeat;
+            filter: blur(1px);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+
+
+
 
         /* NAVIGATION */
 
@@ -340,19 +356,19 @@
 
             
                 <h1 class="gradient-text">STAGEWRK</h1>
-                
+
                 <style>
                 .gradient-text {
-                    background: linear-gradient(
-                        90deg,
-                        #006341 0%,
-                        #FFFFFF 50%,
-                        #C8102E 100%
-                    );
-                    -webkit-background-clip: text;
-                    background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    color: transparent;
+                background: linear-gradient(
+                    120deg,
+                    #006341 0%,
+                    #FFFFFF 50%,
+                    #C8102E 100%
+                );
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                color: transparent;
                 }
                 </style>
 
