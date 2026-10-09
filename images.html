@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stagewrk - Images</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #111111, #242424);
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            width: 100%;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            background: rgba(15, 15, 15, 0.88);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        /* LANGUAGE DROPDOWN */
+
+        .language-switcher {
+            margin-left: 25px;
+            padding: 8px 10px;
+            background: #222;
+            color: white;
+            border: 1px solid #555;
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .language-switcher:hover {
+            border-color: #888;
+        }
+
+        .language-switcher option {
+            background: #222;
+            color: white;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 140px 8% 100px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: #bdbdbd;
+            font-size: 16px;
+            margin-bottom: 35px;
+        }
+
+        /* IMAGE GALLERY GRID */
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #c7c7c7;
+            line-height: 1.5;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 35px 8%;
+            text-align: center;
+            color: #777;
+            font-size: 13px;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #aaa;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+            nav {
+                padding: 15px 5%;
+            }
+
+            .logo img {
+                width: 42px;
+                height: 42px;
+            }
+
+            nav > div {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+
+            nav a {
+                margin-left: 10px;
+                font-size: 12px;
+            }
+
+            .language-switcher {
+                margin-left: 10px;
+                font-size: 12px;
+                padding: 7px 8px;
+            }
+
+            section {
+                padding: 110px 6% 75px;
+            }
+
+            .card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Stagewrk Logo">
+        </a>
+        <div>
+            <a href="index.html" data-i18n="navHome">Home</a>
+            <a href="index.html#about" data-i18n="navAbout">About</a>
+            <a href="index.html#rights" data-i18n="navRights">IP & Rights</a>
+            <a href="index.html#socials" data-i18n="navSocials">Socials</a>
+            <a href="index.html#contact" data-i18n="navContact">Contact</a>
+            <a href="images.html" data-i18n="navImages">Images</a>
+            
+            <select id="languageSelect" class="language-switcher">
+                <option value="en">EN</option>
+                <option value="de">DE</option>
+            </select>
+        </div>
+    </nav>
+
+    <!-- IMAGES SECTION -->
+    <section>
+        <h2 class="section-title" data-i18n="imagesTitle">Event Images</h2>
+        <p class="section-subtitle" data-i18n="imagesSubtitle">Highlights and snapshots from past Stagewrk events.</p>
+
+        <div class="gallery-grid">
+            <!-- Image Card 1 -->
+            <div class="card">
+                <img src="images/event1.jpg" alt="Event 1">
+                <p data-i18n="imgCaption1">Opening night at Stagewrk Live - Berlin</p>
+            </div>
+
+            <!-- Image Card 2 -->
+            <div class="card">
+                <img src="images/event2.jpg" alt="Event 2">
+                <p data-i18n="imgCaption2">Backstage impressions and asset setup</p>
+            </div>
+
+            <!-- Image Card 3 -->
+            <div class="card">
+                <img src="images/event3.jpg" alt="Event 3">
+                <p data-i18n="imgCaption3">Community meetup and collaboration session</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Stagewrk. <span data-i18n="footerText">All rights reserved.</span></p>
+    </footer>
+
+    <!-- LANGUAGE SYSTEM -->
+    <script>
+        const translations = {
+            en: {
+                navHome: "Home",
+                navAbout: "About",
+                navRights: "IP & Rights",
+                navSocials: "Socials",
+                navContact: "Contact",
+                navImages: "Images",
+
+                imagesTitle: "Event Images",
+                imagesSubtitle: "Highlights and snapshots from past Stagewrk events.",
+                imgCaption1: "Te quiero puta - Test",
+                imgCaption2: "Sonne - Live debut",
+                imgCaption3: "Links234 - Test",
+
+                footerText: "All rights reserved."
+            },
+
+            de: {
+                navHome: "Startseite",
+                navAbout: "Über Stagewrk",
+                navRights: "IP & Rechte",
+                navSocials: "Socials",
+                navContact: "Kontakt",
+                navImages: "Bilder",
+
+                imagesTitle: "Event-Bilder",
+                imagesSubtitle: "Highlights und Schnappschüsse vergangener Stagewrk-Events.",
+                imgCaption1: "Te quiero puta - Test",
+                imgCaption2: "Sonne - Live debut",
+                imgCaption3: "Links234 - Test",
+
+                footerText: "Alle Rechte vorbehalten."
+            }
+        };
+
+        function setLanguage(lang) {
+            const elements = document.querySelectorAll("[data-i18n]");
+            elements.forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            localStorage.setItem("selectedLanguage", lang);
+        }
+
+        const languageSelect = document.getElementById("languageSelect");
+        
+        // Load saved language preference or default to 'en'
+        const savedLang = localStorage.getItem("selectedLanguage") || "en";
+        languageSelect.value = savedLang;
+        setLanguage(savedLang);
+
+        languageSelect.addEventListener("change", (event) => {
+            setLanguage(event.target.value);
+        });
+    </script>
+
+</body>
+</html>
