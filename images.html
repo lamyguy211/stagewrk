@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>STAGEWRK - Where virtual stages burn.</title>
-    <link rel="icon" type="image/webp" href="https://tr.rbxcdn.com/180DAY-78d973c0d41d258a9d29341738bdfd56/150/150/Image/Webp/noFilter">
+
+    <link rel="icon" type="image/webp"
+        href="https://tr.rbxcdn.com/180DAY-78d973c0d41d258a9d29341738bdfd56/150/150/Image/Webp/noFilter">
+
     <style>
         * {
             margin: 0;
@@ -23,7 +27,9 @@
             min-height: 100vh;
         }
 
-        /* NAVIGATION */
+        /* =========================
+           NAVIGATION
+        ========================= */
 
         nav {
             width: 100%;
@@ -34,9 +40,12 @@
             position: fixed;
             top: 0;
             z-index: 1000;
+
             background: rgba(15, 15, 15, 0.88);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            -webkit-backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .logo {
@@ -56,25 +65,32 @@
             text-decoration: none;
             margin-left: 25px;
             font-size: 14px;
-            transition: 0.2s;
+            transition: color 0.2s ease;
         }
 
         nav a:hover {
             color: white;
         }
 
-        /* LANGUAGE DROPDOWN */
+        /* =========================
+           LANGUAGE DROPDOWN
+        ========================= */
 
         .language-switcher {
             margin-left: 25px;
             padding: 8px 10px;
+
             background: #222;
             color: white;
+
             border: 1px solid #555;
             border-radius: 8px;
+
             font-size: 13px;
             cursor: pointer;
             outline: none;
+
+            transition: border-color 0.2s ease;
         }
 
         .language-switcher:hover {
@@ -86,7 +102,9 @@
             color: white;
         }
 
-        /* SECTIONS */
+        /* =========================
+           SECTIONS
+        ========================= */
 
         section {
             padding: 140px 8% 100px;
@@ -105,30 +123,63 @@
             margin-bottom: 35px;
         }
 
-        /* IMAGE GALLERY GRID */
+        /* =========================
+           IMAGE GALLERY
+        ========================= */
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(300px, 1fr)
+            );
+
             gap: 30px;
         }
 
         .card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.05);
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 18px;
+
             padding: 20px;
+
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
             display: flex;
             flex-direction: column;
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.15);
         }
 
         .card img {
             width: 100%;
             height: 220px;
+
             object-fit: cover;
+
             border-radius: 12px;
             margin-bottom: 15px;
+
+            cursor: zoom-in;
+
+            transition:
+                transform 0.3s ease,
+                filter 0.3s ease;
+        }
+
+        .card img:hover {
+            transform: scale(1.02);
+            filter: brightness(1.08);
         }
 
         .card p {
@@ -138,14 +189,110 @@
             text-align: center;
         }
 
-        /* FOOTER */
+        /* =========================
+           IMAGE LIGHTBOX / ZOOM
+        ========================= */
+
+        .image-lightbox {
+            position: fixed;
+            inset: 0;
+
+            z-index: 2000;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 40px;
+
+            /*
+             * Dark translucent background
+             * + blur behind the popup
+             */
+            background: rgba(0, 0, 0, 0.68);
+
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition:
+                opacity 0.35s ease,
+                visibility 0.35s ease;
+        }
+
+        /*
+         * Active/open state
+         */
+        .image-lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /*
+         * Enlarged image
+         */
+        .image-lightbox img {
+            display: block;
+
+            max-width: 90vw;
+            max-height: 90vh;
+
+            width: auto;
+            height: auto;
+
+            object-fit: contain;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.7),
+                0 0 0 1px rgba(255, 255, 255, 0.12);
+
+            cursor: zoom-out;
+
+            /*
+             * Starting position for animation
+             */
+            transform: scale(0.72);
+            opacity: 0;
+
+            transition:
+                transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.3s ease;
+        }
+
+        /*
+         * Smoothly zoom image into place
+         */
+        .image-lightbox.active img {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        /*
+         * Prevent page from scrolling while
+         * an image is open.
+         */
+        body.lightbox-open {
+            overflow: hidden;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
-            border-top: 1px solid rgba(255,255,255,0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+
             padding: 35px 8%;
+
             text-align: center;
+
             color: #777;
             font-size: 13px;
+
             margin-top: 50px;
         }
 
@@ -159,9 +306,12 @@
             color: white;
         }
 
-        /* MOBILE */
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 700px) {
+
             nav {
                 padding: 15px 5%;
             }
@@ -196,19 +346,34 @@
             .card {
                 padding: 15px;
             }
+
+            .image-lightbox {
+                padding: 20px;
+            }
+
+            .image-lightbox img {
+                max-width: 95vw;
+                max-height: 85vh;
+                border-radius: 10px;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <!-- NAVIGATION -->
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
     <nav>
-         <a href="#" class="logo">
+        <a href="#" class="logo">
             <img
                 src="https://tr.rbxcdn.com/180DAY-78d973c0d41d258a9d29341738bdfd56/150/150/Image/Webp/noFilter"
                 alt="Stagewrk Logo"
             >
         </a>
+
         <div>
             <a href="index.html" data-i18n="navHome">Home</a>
             <a href="index.html#about" data-i18n="navAbout">About</a>
@@ -216,49 +381,216 @@
             <a href="index.html#socials" data-i18n="navSocials">Socials</a>
             <a href="index.html#contact" data-i18n="navContact">Contact</a>
             <a href="images.html" data-i18n="navImages">Images</a>
-            
-            <select id="languageSelect" class="language-switcher">
+
+            <select
+                id="languageSelect"
+                class="language-switcher"
+            >
                 <option value="en">EN</option>
                 <option value="de">DE</option>
             </select>
         </div>
     </nav>
 
-    <!-- IMAGES SECTION -->
+
+    <!-- =========================
+         IMAGES SECTION
+    ========================= -->
+
     <section>
-        <h2 class="section-title" data-i18n="imagesTitle">Event Images</h2>
-        <p class="section-subtitle" data-i18n="imagesSubtitle">Highlights and snapshots from past Stagewrk events.</p>
+
+        <h2
+            class="section-title"
+            data-i18n="imagesTitle"
+        >
+            Event Images
+        </h2>
+
+        <p
+            class="section-subtitle"
+            data-i18n="imagesSubtitle"
+        >
+            Highlights and snapshots from past Stagewrk events.
+        </p>
+
 
         <div class="gallery-grid">
-            <!-- Image Card 1 -->
+
+            <!-- IMAGE 1 -->
+
             <div class="card">
-                <img src="images/event1.jpg" alt="Event 1">
-                <p data-i18n="imgCaption1">Opening night at Stagewrk Live - Berlin</p>
+
+                <img
+                    src="images/event1.jpg"
+                    alt="Event 1"
+                >
+
+                <p data-i18n="imgCaption1">
+                    Te quiero puta - Test
+                </p>
+
             </div>
 
-            <!-- Image Card 2 -->
+
+            <!-- IMAGE 2 -->
+
             <div class="card">
-                <img src="images/event2.jpg" alt="Event 2">
-                <p data-i18n="imgCaption2">Backstage impressions and asset setup</p>
+
+                <img
+                    src="images/event2.jpg"
+                    alt="Event 2"
+                >
+
+                <p data-i18n="imgCaption2">
+                    Sonne - Live debut
+                </p>
+
             </div>
 
-            <!-- Image Card 3 -->
+
+            <!-- IMAGE 3 -->
+
             <div class="card">
-                <img src="images/event3.jpg" alt="Event 3">
-                <p data-i18n="imgCaption3">Community meetup and collaboration session</p>
+
+                <img
+                    src="images/event3.jpg"
+                    alt="Event 3"
+                >
+
+                <p data-i18n="imgCaption3">
+                    Links234 - Test
+                </p>
+
+            </div>
+
+            <!-- IMAGE 4 -->
+
+            <div class="card">
+
+                <img
+                    src="images/event4.jpg"
+                    alt="Event 4"
+                >
+
+                <p data-i18n="imgCaption4">
+                    Du hast - Live in mexico 
+                </p>
+
+            </div>
+
+            <!-- IMAGE 5 -->
+
+            <div class="card">
+
+                <img
+                    src="images/event5.jpg"
+                    alt="Event 5"
+                >
+
+                <p data-i18n="imgCaption5">
+                    Deutschland - Live in mexico 
+                </p>
+
+            </div>
+
+            <!-- IMAGE 6 -->
+
+            <div class="card">
+
+                <img
+                    src="images/event6.jpg"
+                    alt="Event 6"
+                >
+
+                <p data-i18n="imgCaption6">
+                    Radio - Live in mexico
+                </p>
+        
+            </div>
+
+            <!-- IMAGE 7    -->
+
+            <div class="card">
+
+                <img
+                    src="images/event7.jpg"
+                    alt="Event 7"
+                >
+
+                <p data-i18n="imgCaption7">
+                    Haifisch remix - Live in mexico
+                </p>
+
+            </div>
+
+            <!-- IMAGE 8 -->
+
+            <div class="card">
+
+                <img
+                    src="images/event8.jpg"
+                    alt="Event 8"
+                >
+
+                <p data-i18n="imgCaption8">
+                    Rammstein - Live in mexico
+                </p>
+
             </div>
         </div>
+
     </section>
 
-    <!-- FOOTER -->
+
+    <!-- =========================
+         IMAGE LIGHTBOX
+    ========================= -->
+
+    <div
+        class="image-lightbox"
+        id="imageLightbox"
+        aria-hidden="true"
+    >
+
+        <img
+            id="lightboxImage"
+            src=""
+            alt=""
+        >
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
     <footer>
-        <p>&copy; 2026 Stagewrk. <span data-i18n="footerText">All rights reserved.</span></p>
+
+        <p>
+            &copy; 2026 Stagewrk.
+            <span data-i18n="footerText">
+                All rights reserved.
+            </span>
+        </p>
+
     </footer>
 
-    <!-- LANGUAGE SYSTEM -->
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
     <script>
+
+        /* =========================
+           TRANSLATIONS
+        ========================= */
+
         const translations = {
+
             en: {
+
                 navHome: "Home",
                 navAbout: "About",
                 navRights: "IP & Rights",
@@ -267,15 +599,41 @@
                 navImages: "Images",
 
                 imagesTitle: "Event Images",
-                imagesSubtitle: "Highlights and snapshots from past Stagewrk events.",
-                imgCaption1: "Te quiero puta - Test",
-                imgCaption2: "Sonne - Live debut",
-                imgCaption3: "Links234 - Test",
 
-                footerText: "All rights reserved."
+                imagesSubtitle:
+                    "Highlights and snapshots from past Stagewrk events.",
+
+                imgCaption1:
+                    "Te quiero puta - Test",
+
+                imgCaption2:
+                    "Sonne - Live debut",
+
+                imgCaption3:
+                    "Links234 - Test",
+
+                imgCaption4:
+                    "Du hast - Live in mexico",
+
+                imgCaption5:
+                    "Deutschland - Live in mexico",
+
+                imgCaption6:
+                    "Radio - Live in mexico",
+
+                imgCaption7:
+                    "Haifisch remix - Live in mexico",
+
+                imgCaption8:
+                    "Rammstein - Live in mexico",
+
+                footerText:
+                    "All rights reserved."
             },
 
+
             de: {
+
                 navHome: "Startseite",
                 navAbout: "Über Stagewrk",
                 navRights: "IP & Rechte",
@@ -284,36 +642,247 @@
                 navImages: "Bilder",
 
                 imagesTitle: "Event-Bilder",
-                imagesSubtitle: "Highlights und Schnappschüsse vergangener Stagewrk-Events.",
-                imgCaption1: "Te quiero puta - Test",
-                imgCaption2: "Sonne - Live debut",
-                imgCaption3: "Links234 - Test",
 
-                footerText: "Alle Rechte vorbehalten."
+                imagesSubtitle:
+                    "Highlights und Schnappschüsse vergangener Stagewrk-Events.",
+
+                imgCaption1:
+                    "Te quiero puta - Test",
+
+                imgCaption2:
+                    "Sonne - Live debut",
+
+                imgCaption3:
+                    "Links234 - Test",
+
+                imgCaption4:
+                    "Du hast - Live in mexico",
+
+                imgCaption5:
+                    "Deutschland - Live in mexico",
+
+                imgCaption6:
+                    "Radio - Live in mexico",
+
+                imgCaption7:
+                    "Haifisch remix - Live in mexico",
+
+                imgCaption8:
+                    "Rammstein - Live in mexico",
+
+                footerText:
+                    "Alle Rechte vorbehalten."
             }
+
         };
 
+
+        /* =========================
+           LANGUAGE SYSTEM
+        ========================= */
+
         function setLanguage(lang) {
-            const elements = document.querySelectorAll("[data-i18n]");
-            elements.forEach(el => {
-                const key = el.getAttribute("data-i18n");
-                if (translations[lang] && translations[lang][key]) {
-                    el.textContent = translations[lang][key];
+
+            const elements =
+                document.querySelectorAll("[data-i18n]");
+
+            elements.forEach(element => {
+
+                const key =
+                    element.getAttribute("data-i18n");
+
+                if (
+                    translations[lang] &&
+                    translations[lang][key]
+                ) {
+
+                    element.textContent =
+                        translations[lang][key];
+
                 }
+
             });
-            localStorage.setItem("selectedLanguage", lang);
+
+            localStorage.setItem(
+                "selectedLanguage",
+                lang
+            );
         }
 
-        const languageSelect = document.getElementById("languageSelect");
-        
-        // Load saved language preference or default to 'en'
-        const savedLang = localStorage.getItem("selectedLanguage") || "en";
+
+        const languageSelect =
+            document.getElementById("languageSelect");
+
+
+        const savedLang =
+            localStorage.getItem("selectedLanguage") || "en";
+
+
         languageSelect.value = savedLang;
+
         setLanguage(savedLang);
 
-        languageSelect.addEventListener("change", (event) => {
-            setLanguage(event.target.value);
+
+        languageSelect.addEventListener(
+            "change",
+            event => {
+
+                setLanguage(
+                    event.target.value
+                );
+
+            }
+        );
+
+
+        /* =========================
+           IMAGE LIGHTBOX
+        ========================= */
+
+        const lightbox =
+            document.getElementById("imageLightbox");
+
+        const lightboxImage =
+            document.getElementById("lightboxImage");
+
+        const galleryImages =
+            document.querySelectorAll(".card img");
+
+
+        /*
+         * Open image
+         */
+
+        galleryImages.forEach(image => {
+
+            image.addEventListener("click", () => {
+
+                lightboxImage.src =
+                    image.src;
+
+                lightboxImage.alt =
+                    image.alt;
+
+                lightbox.classList.add("active");
+
+                lightbox.setAttribute(
+                    "aria-hidden",
+                    "false"
+                );
+
+                document.body.classList.add(
+                    "lightbox-open"
+                );
+
+            });
+
         });
+
+
+        /*
+         * Close when clicking anywhere
+         * on the background.
+         *
+         * Clicking the actual image does
+         * NOT close it.
+         */
+
+        lightbox.addEventListener(
+            "click",
+            event => {
+
+                if (
+                    event.target === lightbox
+                ) {
+
+                    closeLightbox();
+
+                }
+
+            }
+        );
+
+
+        /*
+         * Close when clicking the
+         * enlarged image as well.
+         *
+         * This gives you the "click anywhere
+         * to get out of zoom" behavior.
+         */
+
+        lightboxImage.addEventListener(
+            "click",
+            () => {
+
+                closeLightbox();
+
+            }
+        );
+
+
+        /*
+         * Escape key closes the image.
+         */
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Escape" &&
+                    lightbox.classList.contains("active")
+                ) {
+
+                    closeLightbox();
+
+                }
+
+            }
+        );
+
+
+        /*
+         * Close lightbox
+         */
+
+        function closeLightbox() {
+
+            lightbox.classList.remove(
+                "active"
+            );
+
+            lightbox.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            document.body.classList.remove(
+                "lightbox-open"
+            );
+
+
+            /*
+             * Wait for the closing animation
+             * before removing the image.
+             */
+
+            setTimeout(() => {
+
+                if (
+                    !lightbox.classList.contains(
+                        "active"
+                    )
+                ) {
+
+                    lightboxImage.src = "";
+
+                }
+
+            }, 450);
+
+        }
+
     </script>
 
 </body>
